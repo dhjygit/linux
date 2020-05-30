@@ -1,0 +1,293 @@
+set $mod Mod1
+font pango:monospace 15
+bindsym $mod+Shift+a move scratchpad
+bindsym $mod+a scratchpad show floating toggle
+
+bindsym ctrl+Mod1+k workspace prev
+bindsym ctrl+Mod1+j workspace next
+
+#########################################################################################
+
+exec_always picom -b
+exec_always --no-startup-id fcitx
+exec_always --no-startup-id feh --bg-scale "/home/luis/Pictures/wallpaper/30.jpg"
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+#exec_always --no-startup-id ~/.clash/clash
+exec_always --no-startup-id exec qv2ray
+exec_always sleep 1; xmodmap ~/.xmodmap
+exec_always --no-startup-id exec xinput disable 16
+#bindsym F1 --no-startup-id exec ~/.shell/wifi.sh
+#########################################################################################
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id xset s 0
+exec --no-startup-id xset dpms 6000 8000 9000
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+#########################################################################################
+# == rofi == #
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+r exec angrysearch
+
+#screenshot#
+bindsym $mod+t exec deepin-screen-recorder
+
+#chromium#
+bindsym $mod+i exec --no-startup-id chromium http://www.baidu.com/
+bindsym $mod+o exec --no-startup-id chromium
+bindsym $mod+p exec --no-startup-id firefox
+
+#netease-cloud-music#
+bindsym $mod+m exec netease-cloud-music &>/dev/null &
+
+floating_modifier $mod
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+q kill
+
+#audio#
+bindsym $mod+e exec pactl set-sink-volume 0 +5%
+bindsym $mod+w exec pactl set-sink-volume 0 -5%
+bindsym $mod+s exec playerctl play-pause
+bindsym $mod+shift+n exec playerctl next
+bindsym $mod+shift+m exec playerctl previous
+#########################################################################################
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#bindsym $mod+ctrl+v split h
+#bindsym $mod+ctrl+h split v
+
+#########################################################################################
+
+bindsym $mod+f fullscreen toggle
+
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+#########################################################################################
+
+bindsym $mod+v focus parent
+bindsym $mod+c focus child
+
+#########################################################################################
+
+#for_window [class="窗口"] floating enable resize set 640 480,move right 330px,move down 70px
+
+for_window [class="angrysearch"] floating enable resize set 800 600
+
+########################################################################################
+
+set $WS1 ""
+set $WS2 ""
+set $WS3 "3"
+set $WS4 "4"
+set $WS5 "5"
+set $WS6 "6"
+set $WS7 "7"
+set $WS8 "8"
+set $WS9 "9"
+
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+
+bindsym ctrl+Mod1+1 move container to workspace $WS1
+bindsym ctrl+Mod1+2 move container to workspace $WS2
+bindsym ctrl+Mod1+3 move container to workspace $WS3
+bindsym ctrl+Mod1+4 move container to workspace $WS4
+bindsym ctrl+Mod1+5 move container to workspace $WS5
+bindsym ctrl+Mod1+6 move container to workspace $WS6
+bindsym ctrl+Mod1+7 move container to workspace $WS7
+bindsym ctrl+Mod1+8 move container to workspace $WS8
+bindsym ctrl+Mod1+9 move container to workspace $WS9
+
+#set $ws1 "1"
+#set $ws2 "2"
+#set $ws3 "3"
+#set $ws4 "4"
+#set $ws5 "5"
+#set $ws6 "6"
+#set $ws7 "7"
+#set $ws8 "8"
+#set $ws9 "9"
+#set $ws10 "10"
+#
+#bindsym $mod+1 workspace number $ws1
+#bindsym $mod+2 workspace number $ws2
+#bindsym $mod+3 workspace number $ws3
+#bindsym $mod+4 workspace number $ws4
+#bindsym $mod+5 workspace number $ws5
+#bindsym $mod+6 workspace number $ws6
+#bindsym $mod+7 workspace number $ws7
+#bindsym $mod+8 workspace number $ws8
+#bindsym $mod+9 workspace number $ws9
+#bindsym $mod+0 workspace number $ws10
+
+#bindsym $mod+Shift+1 move container to workspace number $ws1
+#bindsym $mod+Shift+2 move container to workspace number $ws2
+#bindsym $mod+Shift+3 move container to workspace number $ws3
+#bindsym $mod+Shift+4 move container to workspace number $ws4
+#bindsym $mod+Shift+5 move container to workspace number $ws5
+#bindsym $mod+Shift+6 move container to workspace number $ws6
+#bindsym $mod+Shift+7 move container to workspace number $ws7
+#bindsym $mod+Shift+8 move container to workspace number $ws8
+#bindsym $mod+Shift+9 move container to workspace number $ws9
+#bindsym $mod+Shift+0 move container to workspace number $ws10
+
+assign [class="(?i)netease-cloud-music"] ""
+#########################################################################################
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+#########################################################################################
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+z mode "resize"
+
+##########################################################################################
+
+set $mode_system sleep(S) logout(O) reboot(R) shutdown(U) exit(Esc)
+bindsym $mod+q mode "$mode_system"
+mode "$mode_system" {
+    bindsym shift+s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym shift+o exec --no-startup-id i3-msg exit, mode "default"
+    bindsym shift+r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym shift+u exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym Escape mode "default"
+}
+
+##########################################################################################
+
+## 窗口颜色                边框    背景    文字    提示
+#client.focused          #333333 #333333 #FFFFFF #333333
+#client.focused_inactive #999999 #999999 #FFFFFF #3399FF
+#client.unfocused        #999999 #999999 #FFFFFF #3399FF
+#client.urgent           #990000 #990000 #FFFFFF #990000
+#client.placeholder      #000000 #000000 #FFFFFF #000000
+#client.background       #FFFFFF
+#
+##i3bar设置
+#bar {
+#    i3bar_command i3bar -t
+#    height 38
+##   font pango:wqy-microhei 15
+##   font pango:awesome 15
+##   tray_output none
+##   status_command /home/xiao/.config/i3/jconky
+#    status_command i3blocks
+#    position bottom
+#    #mode hide
+#    strip_workspace_numbers yes
+##   ∥
+#    separator_symbol "    "
+#
+#    colors {
+#        background #101010c6
+#        statusline #FFFFFF
+#        separator  #3399FF
+#        # 工作区颜色         边框    背景    文字
+#        focused_workspace  #3297FD #11111100 #FFFFFF
+#        active_workspace   #FFFFFF #FFFFFF00 #FFFFFF
+#        inactive_workspace #111111 #111111c6 #FFFFFF
+#        urgent_workspace   #990000 #111111c6 #FFFFFF
+#        binding_mode       #3297FD #111111c6 #FFFFFF
+##       binding_mode       #990000 #990000c6 #FFFFFF
+#    }
+#}
+
+
+
+##########################################################################################
+
+#new_window 1pixel
+#new_float 1pixel
+#smart_borders on
+
+for_window [class="^.*"] border pixel 0
+gaps inner 1
+gaps outer 0
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}

@@ -1,0 +1,1 @@
+xinput disable 16
