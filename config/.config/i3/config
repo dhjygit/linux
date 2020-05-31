@@ -10,7 +10,7 @@ bindsym ctrl+Mod1+j workspace next
 
 exec_always picom -b
 exec_always --no-startup-id fcitx
-exec_always --no-startup-id feh --bg-scale "/home/luis/Pictures/wallpaper/30.jpg"
+exec_always --no-startup-id feh --bg-scale "~/.config/i3/background.jpg"
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec_always --no-startup-id ~/.clash/clash
 exec_always --no-startup-id exec qv2ray
